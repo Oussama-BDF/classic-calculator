@@ -1,0 +1,165 @@
+@font-face {
+  font-family: "digital";
+  src: url("./fonts/digital-7.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #888888;
+  font-family: Arial, sans-serif;
+}
+
+.calculator {
+  width: 301px;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 4px 4px 23px rgb(0 0 0 / 79%);
+  background-color: #424144;
+}
+
+.container {
+  padding: 10px;
+  border: 1px solid #2f2e31;
+  border-radius: 10px;
+}
+
+/* ! Description */
+.description {
+  margin-bottom: 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.description p:nth-child(1) {
+  margin-bottom: 5px;
+}
+
+.description p:not(:first-child) {
+  font-size: 11px;
+}
+/* ! End Description */
+
+/* ! Screen 888888888888888 */
+.screen-container {
+  padding: 8px 11px;
+  border-radius: 5px;
+  background-color: #393939;
+}
+
+.screen {
+  border-radius: 5px;
+  padding: 0 5px;
+  font-size: 32px;
+  background-color: #3f4948;
+  color: #3f4948;
+  text-align: right;
+  font-family: "digital", sans-serif;
+}
+
+.screen.on {
+  position: relative;
+  background-color: #d5e2bc;
+  z-index: 1;
+}
+/* ! End Screen */
+
+/* ! Buttons */
+.buttons .top,
+.buttons .center,
+.buttons .bottom {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.buttons .center,
+.buttons .bottom {
+  border: 3px double #2f2e31;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.buttons .top {
+  padding: 15px 10px;
+}
+
+.buttons .center {
+  margin-bottom: 5px;
+}
+
+.btn {
+  position: relative;
+  font-size: 19px;
+  padding: 5px 15px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: linear-gradient(to bottom right, #ffffff73 0%, transparent 50%);
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 21%);
+  z-index: 1;
+}
+
+.btn:active {
+  opacity: .9;
+  transform: scale(.99);
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.btn.on {
+  font-size: 13px;
+  padding: 10px 5px;
+}
+
+.btn.sm {
+  font-size: 9px;
+  padding: 4px 15px;
+  border-radius: 10px;
+}
+
+.white {
+  background-color: #fff;
+  color: #000;
+}
+
+.violet {
+  background-color: #493d87;
+  color: #fff;
+}
+
+.red {
+  background-color: #c9302c;
+  color: #fff;
+}
+
+.row-2 {
+  grid-row: span 2;
+}
+/* ! End Buttons */
+
+.solar-eng {
+  font-size: 19px;
+  padding: 5px 15px;
+  text-align: center;
+  border-radius: 5px;
+  grid-column: 3 / 5;
+  background-color: #313636;
+  color: #414544;
+}
