@@ -9,25 +9,25 @@
 </head>
 
 <body>
-  <div class="calculator">
+  <main class="calculator">
 
     <!-- Container -->
     <div class="container">
 
       <!-- Description -->
-      <div class="description">
+      <section class="description">
         <p>FPSB-2025</p>
         <p>Calculator Project</p>
         <p>BOUDAFDAFA OUSSAMA</p>
-      </div>
+      </section>
 
       <!-- Screen -->
-      <div class="screen-container">
+      <section class="screen-container">
         <div class="screen">0</div>
-      </div>
+      </section>
 
-      <!-- Button -->
-      <div class="buttons">
+      <!-- Buttons -->
+      <section class="buttons">
 
         <div class="top">
           <button class="btn red on">ON/C</button>
@@ -36,38 +36,38 @@
 
         <div class="center">
           <button class="btn sm red off">OFF</button>
-          <button class="btn sm action violet">MRC</button>
-          <button class="btn sm action violet">M-</button>
-          <button class="btn sm action violet">M+</button>
+          <button class="btn sm violet action" value="mcr">MRC</button>
+          <button class="btn sm violet action" value="m-">M-</button>
+          <button class="btn sm violet action" value="m+">M+</button>
           <button class="btn sm violet audio">♫</button>
-          <button class="btn sm action violet">√</button>
-          <button class="btn sm action violet">%</button>
-          <button class="btn sm action violet">/</button>
+          <button class="btn sm violet action" value="sqrt">√</button>
+          <button class="btn sm violet action" value="%">%</button>
+          <button class="btn sm violet action" value="/">&divide;</button>
         </div>
 
         <div class="bottom">
-          <button class="btn action white">7</button>
-          <button class="btn action white">8</button>
-          <button class="btn action white">9</button>
-          <button class="btn action violet">*</button>
-          <button class="btn action white">4</button>
-          <button class="btn action white">5</button>
-          <button class="btn action white">6</button>
-          <button class="btn action violet">-</button>
-          <button class="btn action white">1</button>
-          <button class="btn action white">2</button>
-          <button class="btn action white">3</button>
-          <button class="btn action red row-2">+</button>
-          <button class="btn action white">0</button>
-          <button class="btn action white">.</button>
-          <button class="btn action white">=</button>
+          <button class="btn white action" value="7">7</button>
+          <button class="btn white action" value="8">8</button>
+          <button class="btn white action" value="9">9</button>
+          <button class="btn violet action" value="*">*</button>
+          <button class="btn white action" value="4">4</button>
+          <button class="btn white action" value="5">5</button>
+          <button class="btn white action" value="6">6</button>
+          <button class="btn violet action" value="-">-</button>
+          <button class="btn white action" value="1">1</button>
+          <button class="btn white action" value="2">2</button>
+          <button class="btn white action" value="3">3</button>
+          <button class="btn red row-2 action" value="+">+</button>
+          <button class="btn white action" value="0">0</button>
+          <button class="btn white action" value=".">.</button>
+          <button class="btn white action" value="=">=</button>
         </div>
 
-      </div>
+      </section>
 
     </div>
 
-  </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
