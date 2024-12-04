@@ -1,6 +1,6 @@
 @font-face {
   font-family: "digital";
-  src: url("./fonts/digital-7.ttf") format("truetype");
+  src: url("./fonts/Segment7-4Gml.otf");
 }
 
 * {
@@ -19,17 +19,17 @@ body {
 }
 
 .calculator {
-  width: 301px;
-  border-radius: 20px;
+  width: 297px;
   padding: 10px;
-  box-shadow: 4px 4px 23px rgb(0 0 0 / 79%);
+  border-radius: 20px;
+  box-shadow: 2px 2px 25px rgb(0 0 0 / 79%);
   background-color: #424144;
 }
 
 .container {
   padding: 10px;
-  border: 1px solid #2f2e31;
   border-radius: 10px;
+  box-shadow: 0px 0px 4px rgb(0 0 0 / 45%);
 }
 
 /* ! Description */
@@ -47,30 +47,44 @@ body {
 .description p:not(:first-child) {
   font-size: 11px;
 }
+
 /* ! End Description */
 
-/* ! Screen 888888888888888 */
+/* ! Screen */
 .screen-container {
   padding: 8px 11px;
-  border-radius: 5px;
+  border-radius: 7.5px 7.5px 15px 15px;
   background-color: #393939;
 }
 
 .screen {
-  border-radius: 5px;
-  padding: 0 5px;
+  position: relative;
+  padding: 0 14px;
+  border-radius: 5px 5px 10px 10px;
+  background-color: #9a9d6b;
+  color: #9a9d6b;
   font-size: 32px;
-  background-color: #3f4948;
-  color: #3f4948;
   text-align: right;
   font-family: "digital", sans-serif;
 }
 
 .screen.on {
-  position: relative;
-  background-color: #d5e2bc;
+  color: #2f2f2f;
   z-index: 1;
 }
+
+.screen.on::before {
+  content: "8.8.8.8.8.8.8.8.8.8.8.";
+  position: absolute;
+  inset: 0;
+  padding: inherit;
+  border-radius: inherit;
+  color: #bdbdbd;
+  color: #87895c;
+  font-size: inherit;
+  z-index: -1;
+}
+
 /* ! End Screen */
 
 /* ! Buttons */
@@ -82,15 +96,15 @@ body {
   gap: 10px;
 }
 
-.buttons .center,
-.buttons .bottom {
-  border: 3px double #2f2e31;
-  border-radius: 8px;
-  padding: 10px;
-}
-
 .buttons .top {
   padding: 15px 10px;
+}
+
+.buttons .center,
+.buttons .bottom {
+  padding: 10px;
+  border: 3px double #2f2e31;
+  border-radius: 8px;
 }
 
 .buttons .center {
@@ -98,29 +112,13 @@ body {
 }
 
 .btn {
-  position: relative;
-  font-size: 19px;
   padding: 5px 15px;
-  text-align: center;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
+  box-shadow: 1px 1px 4px rgb(0 0 0 / 40%);
   background: linear-gradient(to bottom right, #ffffff73 0%, transparent 50%);
-  box-shadow: 1px 1px 2px rgb(0 0 0 / 21%);
-  z-index: 1;
-}
-
-.btn:active {
-  opacity: .9;
-  transform: scale(.99);
-}
-
-.btn::before {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  z-index: -1;
+  font-size: 19px;
+  cursor: pointer;
 }
 
 .btn.on {
@@ -129,30 +127,36 @@ body {
 }
 
 .btn.sm {
-  font-size: 9px;
+  font-size: 10px;
   padding: 4px 15px;
   border-radius: 10px;
 }
 
-.white {
+.btn.white {
   background-color: #fff;
   color: #000;
 }
 
-.violet {
+.btn.violet {
   background-color: #493d87;
   color: #fff;
 }
 
-.red {
+.btn.red {
   background-color: #c9302c;
   color: #fff;
 }
 
+.btn:active {
+  opacity: 0.9;
+  transform: scale(0.99);
+}
+
+/* ! End Buttons */
+
 .row-2 {
   grid-row: span 2;
 }
-/* ! End Buttons */
 
 .solar-eng {
   font-size: 19px;
@@ -161,5 +165,5 @@ body {
   border-radius: 5px;
   grid-column: 3 / 5;
   background-color: #313636;
-  color: #414544;
+  color: #515756;
 }
