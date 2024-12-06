@@ -3,25 +3,66 @@ const screen = document.querySelector(".screen");
 const buttons = document.querySelectorAll(".btn.action");
 const onButton = document.querySelector(".btn.on");
 const offButton = document.querySelector(".btn.off");
+const audioBtn = document.querySelector(".btn.audio");
 const audio = new Audio("./store-scanner-beep-90395.mp3");
-const audioBtn = document.querySelector(".audio");
 
 let expression = "", isOn = false, isAudioOn = true, memory = 0;
 
 // !Add Event Listeners
-buttons.forEach((button) => button.addEventListener("click", handleInput));
 onButton.addEventListener("click", onCalculator);
 offButton.addEventListener("click", offCalculator);
 buttons.forEach((button) => button.addEventListener("click", playAudio));
 onButton.addEventListener("click", playAudio);
-audioBtn.addEventListener("click", () => { if (isOn) isAudioOn = !isAudioOn })
+audioBtn.addEventListener("click", switchAudio)
+buttons.forEach((button) => button.addEventListener("click", handleInput));
 audioBtn.addEventListener("click", playAudio);
 
 // !Functions
+function onCalculator() {
+  if (!isOn) {
+    // Role of "ON"
+    isOn = true;
+    screen.classList.add("on");
+  } else {
+    // Role of "C"
+    expression = "";
+  }
+  updateScreen(); // in all the cases the screen must contains 0
+}
+
+function offCalculator() {
+  if (isOn) {
+    isOn = false;
+    expression = "";
+    updateScreen();
+    isAudioOn = true;
+    memory = 0;
+    screen.classList.remove("on");
+  }
+}
+
+function playAudio() {
+  if (isOn && isAudioOn) {
+    audio.currentTime = 0;
+    audio.play();
+    // Stop the audio after 0.3 seconds (300 milliseconds)
+    setTimeout(() => {
+      audio.pause();
+      audio.currentTime = 0;
+    }, 300);
+  }
+}
+
+function switchAudio() {
+  if (isOn){
+    isAudioOn = !isAudioOn ;
+  }
+}
+
 function handleInput(event) {
   if (!isOn) return; // Ignore input if the calculator is off
 
-  const value = event.target.textContent; // Get the value of the clicked button(it can be 1, +, =, etc)
+  const value = event.target.value; // Get the value of the clicked button(it can be 1, +, =, etc)
 
   if (isNumberOrDecimal(value)) {
     handleNumber(value);
@@ -31,13 +72,13 @@ function handleInput(event) {
     if (!calculateResult()) return;
   } else if (value === "%") {
     calculatePercentage();
-  } else if (value === "√") {
+  } else if (value === "sqrt") {
       calculateSquareRoot();
-  } else if (value === "MRC") {
+  } else if (value === "mcr") {
       recallMemory();
-  } else if (value === "M+") {
+  } else if (value === "m+") {
       fillMemory();
-  } else if (value === "M-") {
+  } else if (value === "m-") {
       clearMemory();
   }
 
@@ -51,6 +92,11 @@ function isNumberOrDecimal(value) {
 
 function handleNumber(value) {
   if (value === "." && expression.endsWith(".")) return; // Ignore input if the value is ".", and the exp already ends with "."
+  if (value === "0" && expression === "") return;
+  if (value === "." && expression === ""){
+    expression = "0.";
+    return;
+  }
   expression += value;
 }
 
@@ -89,7 +135,8 @@ function calculateSquareRoot() {
 }
 
 function updateScreen(value) {
-  screen.textContent = value || 0;
+  const maxDigits = (value?.toString().includes("."))? 15 : 14;
+  screen.textContent = value?.toString().slice(0, maxDigits) || 0;
 }
 
 function recallMemory() {
@@ -97,42 +144,12 @@ function recallMemory() {
 }
 
 function fillMemory() {
-  memory = parseFloat(expression);
+  if(memory === 0)
+    memory = parseFloat(expression);
+  else
+    memory += parseFloat(expression);
 }
 
 function clearMemory() {
   memory = 0;
-}
-
-function onCalculator() {
-  if (!isOn) {
-    // Role of "ON"
-    isOn = true;
-    screen.classList.add("on");
-  } else {
-    // Role of "C"
-    expression = "";
-  }
-  updateScreen(); // in all the cases the screen must contains 0
-}
-
-function offCalculator() {
-  if (isOn) {
-    isOn = false;
-    screen.classList.remove("on");
-    expression = "";
-    updateScreen();
-  }
-}
-
-function playAudio() {
-  if (isOn && isAudioOn) {
-    audio.currentTime = 0;
-    audio.play();
-    // Stop the audio after 0.3 seconds (300 milliseconds)
-    setTimeout(() => {
-      audio.pause();
-      audio.currentTime = 0;
-    }, 300);
-  }
 }
